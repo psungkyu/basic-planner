@@ -13,3 +13,24 @@ jobs:
           node-version: '16'
       - run: npm install -g bats
       - run: bats -v
+
+      # 추가
+      - name: Make zip file #1
+        run: zip -qq -r ./$GITHUB_SHA.zip .
+        shell: bash
+
+      - name: Configure AWS credentials #2
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.ACCESS_KEY_SECRET }}
+          aws-region: ap-northeast-2
+
+      - name: Upload to S3 #3
+        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://basic-planner-psk-06204/$GITHUB_SHA.zip
+
+      - name: Code Deploy #4
+        run: aws deploy create-deployment --application-name basicplanner
+          --deployment-config-name CodeDeployDefault.OneAtATime
+          --deployment-group-name basic-planner
+          --s3-location bucket=basic-planner-psk-06204,bundleType=zip,key=$GITHUB_SHA.zip
