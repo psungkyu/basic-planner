@@ -6,8 +6,8 @@ echo "Start shell script file!"
 #     echo "Process already running!"
 # fi
 cd app
-sudo npx kill-port 3000
+npx kill-port 3000
 echo "Server is running!"
-sudo npm start
+npm start
 
 
