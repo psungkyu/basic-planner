@@ -15,6 +15,7 @@ curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash -
 sudo yum install nodejs npm -y
 sudo npm ci
 sudo chmod -R 777 /home/ec2-user/app/node_modules/.cache/.eslintcache
+sudo chmod -R 777 /home/ec2-user/app/build/asset-manifest.json
 npx kill-port 3000
 echo "Server is running!"
 # npm start
