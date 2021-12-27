@@ -22,8 +22,6 @@ jobs:
       - run: bats -v
       - run: echo Installing source NPM dependencies
       - run: npm install
-
-      - name: npm run build
       - run: echo Build started on 'date'
       - run: npm run build
 
