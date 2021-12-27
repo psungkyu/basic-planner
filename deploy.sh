@@ -17,4 +17,5 @@ sudo npm ci
 sudo chmod -R 777 /home/ec2-user/app/node_modules/.cache/.eslintcache
 npx kill-port 3000
 echo "Server is running!"
-npm start
+# npm start
+npm run build
