@@ -9,6 +9,8 @@ echo "Start shell script file!"
 #     echo "Process already running!"
 # fi
 cd $REPOSITORY
+SHELL_PATH=`pwd -P`
+echo $SHELL_PATH
 npx kill-port 3000
 echo "Server is running!"
 npm start
