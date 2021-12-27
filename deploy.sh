@@ -11,6 +11,8 @@ echo "Start shell script file!"
 cd $REPOSITORY
 SHELL_PATH=`pwd -P`
 echo $SHELL_PATH
+curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash -  
+sudo yum install nodejs npm -y
 npx kill-port 3000
 echo "Server is running!"
 npm start
