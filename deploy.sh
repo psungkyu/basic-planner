@@ -1,6 +1,8 @@
 #!/bin/bash
 # deploy.sh
-source /root/.bash_profile
+echo "Setup path"
+export PATH=~/.local/bin:$PATH
+source ~/.profile
 echo "Start shell script file!"
 # if pidof -x "deploy.sh" > /dev/null; then
 #     echo "Process already running!"
@@ -9,5 +11,3 @@ cd app
 npx kill-port 3000
 echo "Server is running!"
 npm start
-
-
